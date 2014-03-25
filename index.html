@@ -10,9 +10,9 @@
 
     <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
 
-    <link rel="stylesheet" href="/css/main.f0cc.css"/>
+    <link rel="stylesheet" href="/css/main.91fd.css"/>
 
-    <script src="/js/head-scripts.7596.js"></script>
+    <script src="/js/head-scripts.d41d.js"></script>
 
   </head>
   <body>
@@ -50,7 +50,7 @@
 
     <div class="post-date">24 Mar 2014</div>
 
-    <p>I’ve been using <a href="http://yeoman.io/">Yeoman</a> lately for SPA projects in <a href="http://angularjs.org/">Angular.js</a>, but have typically favored <a href="http://middlemanapp.com/">Middleman</a> for the generation of static sites that contain multiple pages. Middlman’s simple integration of the <code>Data</code> folder and <code>proxy</code> declarations offers a compellingly clean way to build a set of pages from a <strong>YAML</strong> table of contents, which has allowed non-technical users in my office to broaden their scope from editing basic markdown content to now updating sitemap and navigation trees easily. It’s remarkable how quickly a markup-free syntax can overcome the usual barriers that prevent turning over the keys to our content to the right hands. </p>
+    <p>I’ve been using <a href="http://yeoman.io/">Yeoman</a> lately for SPA projects in <a href="http://angularjs.org/">Angular.js</a>, but have typically favored <a href="http://middlemanapp.com/">Middleman</a> for the generation of static sites that contain multiple pages. Middleman’s simple integration of the <code>Data</code> folder and <code>proxy</code> declarations offers a compellingly clean way to build a set of pages from a <strong>YAML</strong> table of contents, which has allowed non-technical users in my office to broaden their scope from editing basic markdown content to now updating sitemap and navigation trees easily. It’s remarkable how quickly a markup-free syntax can overcome the usual barriers that prevent turning over the keys to our content to the right hands. </p>
 
 <p>But for my own blogging purposes, I’m finally jumping into <a href="http://jekyllrb.com">Jekyll</a> for its more blog-centric features, and Yeoman has made the process a pleasure with a host of convenient grunt tasks ready to go. </p>
 
@@ -68,14 +68,19 @@
     <span class="p">},</span>
 </code></pre></div>
 
-<p>Then be sure to add <code>bowerInstall</code> to your relevant grunt tasks (serve, build) near the top of the list. Lastly, just insert the wrapping comments into your chosen location in the main template.</p>
+<p>Then be sure to add <code>bowerInstall</code> to your relevant grunt tasks (serve, build) near the top of the list. Lastly, just insert the wrapping comments inside the existing <code>build:css</code> and <code>build:js</code> comments in the head.</p>
 
-<div class="highlight"><pre><code class="html"><span class="c">&lt;!-- somewhere in &lt;head&gt; --&gt;</span>
+<div class="highlight"><pre><code class="html">    <span class="c">&lt;!-- build:css({app,.tmp}) /css/main.css --&gt;</span>
     <span class="c">&lt;!-- bower:css --&gt;</span>
     <span class="c">&lt;!-- endbower --&gt;</span>
+      ...
+    <span class="c">&lt;!-- endbuild --&gt;</span>
   
+    <span class="c">&lt;!-- build:js({app,.tmp}) /js/head-scripts.js --&gt;</span>
     <span class="c">&lt;!-- bower:js --&gt;</span>
     <span class="c">&lt;!-- endbower --&gt;</span>
+    ...
+    <span class="c">&lt;!-- endbuild --&gt;</span>
 </code></pre></div>
 
 <p>These will be filled with the relevant pieces of any bower packages installed. Having worked with Middleman and its Ruby-based methods of automating asset management (Sprockets-based) at length, I’m somewhat pleasantly surprised by how easily Grunt tasks can be made to accomplish the same goal, leaving the Ruby site generator to stick to what it handles best, and avoiding the need for complex interaction with Rake.</p>

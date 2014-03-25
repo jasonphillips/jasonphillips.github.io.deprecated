@@ -3,7 +3,7 @@
 
 # TEAM
 
-    Jason Phillips -- author, developer 
+    Jason Phillips -- author, developer, etc
 
 # TECHNOLOGY COLOPHON
 
